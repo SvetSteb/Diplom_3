@@ -47,13 +47,18 @@ class AuthorizePage(BasePage):
         self.click_on_element_for_firefox(AuthPageLocators.EYE_ICON_PASSWORD)
         if self.wait_for_visibiliti_of_element(AuthPageLocators.PASSWORD_VISIBLE_FIELD):
             return True
+        else: 
+            return False
         
     @allure.step('Проверить вкладку История заказов')
     def check_orders_history(self):
         self.wait_for_and_click_element(AuthPageLocators.ORDERS_HISTORY)
         element = self.wait_for_visibiliti_of_element(AuthPageLocators.ORDERS_HISTORY)
         element_class = element.get_attribute("class")
-        return element_class == ORDER_HISTORY_ACTIVE
+        if element_class == ORDER_HISTORY_ACTIVE:
+            return True
+        else:
+            return False
     
     @allure.step('Выйти из аккаунта')
     def logout(self):
@@ -63,5 +68,4 @@ class AuthorizePage(BasePage):
     @allure.step('Получить номер последнего заказа из истории')
     def last_order_number_from_history_get(self):
         return self.get_elements_text(AuthPageLocators.LAST_ORDER_IN_HISTORY)
-        
-    
+         

@@ -1,7 +1,6 @@
 import allure
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 class BasePage:
@@ -119,7 +118,12 @@ evt.initMouseEvent("dragenter", true, true, window, 0, 0, 0, 0, 0, false, false,
                 return current != initial_text
             except:
                 return False
-        return predicate
+        return predicate 
     
+    @allure.step('Ожидание исчезновения элемента')
     def wait_for_invisibility(self, locator):
         WebDriverWait(self.driver, 10).until(EC.invisibility_of_element(locator))
+
+    @allure.step('Ожидание нового текста в элементе')
+    def wait_new_text(self, locator, text):
+        WebDriverWait(self.driver, 15).until(self.wait_until_text_changed(locator, text))

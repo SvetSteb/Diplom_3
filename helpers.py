@@ -51,5 +51,3 @@ class User:
     def delete_user(auth_token):
         delete = requests.delete(Urls.API_DELETE_USER, headers={'Authorization': auth_token})
         return delete
-
-

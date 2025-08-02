@@ -1,10 +1,9 @@
 import allure
 from pages.base_page import BasePage
-from selenium.webdriver.common.by import By
 
 from data import *
 from locators.queue_page_locators import QueueLocators
-from helpers import format_locator_for_order_number, format_locator_for_order_long_number
+from helpers import format_locator_for_order_long_number
 
 class QueuePage(BasePage):
     
@@ -21,5 +20,4 @@ class QueuePage(BasePage):
     @allure.step('Получить число заказов из счетчика по локатору')
     def get_counter_of_orders(self, locator):
         return self.get_elements_text(locator)
-    
     

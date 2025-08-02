@@ -88,5 +88,3 @@ class TestQueuePage:
         main_page.click_on_queue_of_orders()
         order_list = main_page.get_elements_text(QueueLocators.IN_PROGRESS_LIST)
         assert order_number in order_list
-
-    

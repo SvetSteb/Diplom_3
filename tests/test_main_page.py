@@ -1,6 +1,5 @@
 import allure
 import pytest
-import time
 
 from locators.main_page_locators import MainPageLocators
 from data import Urls
@@ -71,4 +70,3 @@ class TestMainPage:
         auth_page.authorization(new_user[0])
         order_number = main_page.order_burger()
         assert order_number != '9999'
-

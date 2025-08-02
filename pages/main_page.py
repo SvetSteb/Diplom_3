@@ -1,7 +1,6 @@
 import allure
-from selenium.webdriver.support.wait import WebDriverWait
-from pages.base_page import BasePage
 
+from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
 from helpers import *
 
@@ -33,7 +32,7 @@ class MainPage(BasePage):
         self.drag_and_drop(MainPageLocators.SAUSE_1, MainPageLocators.BASCET)
         self.wait_for_and_click_element(MainPageLocators.ORDER_BUTTON)
         self.wait_for_visibiliti_of_element(MainPageLocators.ORDER_NUMBER)
-        WebDriverWait(self.driver, 15).until(self.wait_until_text_changed(MainPageLocators.ORDER_NUMBER, '9999'))
+        self.wait_new_text(MainPageLocators.ORDER_NUMBER, '9999')
         number_element = self.get_elements_text(MainPageLocators.ORDER_NUMBER)
         return number_element
     
